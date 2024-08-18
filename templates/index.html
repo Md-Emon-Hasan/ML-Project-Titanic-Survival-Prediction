@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titanic Survival Prediction</title>
+    <link rel="icon" type="image/x-icon" href="https://w7.pngwing.com/pngs/645/503/png-transparent-computer-icons-rms-titanic-filmstrip-miscellaneous-angle-logo.png">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="glow-text">Titanic Survival Prediction</h1>
+        <h2>Made by Emon Hasan</h2>
+        <form action="/predict" method="post">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="Pclass">Passenger's Ticket Class (Pclass):</label>
+                    <select name="Pclass" id="Pclass" class="form-control">
+                        {% for pclass in Pclasss %}
+                            <option value="{{ pclass }}" {% if pclass == Pclass %}selected{% endif %}>{{ pclass }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="Sex">Passenger's Gender:</label>
+                    <select name="Sex" id="Sex" class="form-control">
+                        {% for sex in Sexs %}
+                        <option value="{{ sex }}" {% if sex == Sex %}selected{% endif %}>{{ sex }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="Embarked">Passenger Boarded (Embarked):</label>
+                    <select name="Embarked" id="Embarked" class="form-control">
+                        {% for embarked in Embarkeds %}
+                        <option value="{{ embarked }}" {% if embarked == Embarked %}selected{% endif %}>{{ embarked }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="Age">Passenger's Age:</label>
+                    <input type="number" step="1" name="Age" id="Age" class="form-control" value="{{ Age }}" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="SibSp">Siblings and Spouses (SibSp):</label>
+                    <input type="number" step="1" name="SibSp" id="SibSp" class="form-control" value="{{ SibSp }}" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="Parch">Parents and Children (Parch):</label>
+                    <input type="number" step="1" name="Parch" id="Parch" class="form-control" value="{{ Parch }}" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="Fare">Amount for Ticket (Fare):</label>
+                    <input type="number" step="1" name="Fare" id="Fare" class="form-control" value="{{ Fare }}" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Predict</button>
+        </form>
+
+        {% if survived is not none %}
+        <h2 class="last">The prediction is that the passenger {{ 'survived' if survived else 'did not survive' }}.</h2>
+        {% endif %}
+
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Emon Hasan. All Rights Reserved. | <a href="https://github.com/Md-Emon-Hasan" target="_blank">GitHub</a></p>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
