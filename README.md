@@ -84,7 +84,7 @@ To get started with this project, follow these steps:
 
 ## 🎉 Live Demo
 
-Check out the live version of the Titanic Survival Predictor app [here]([https://titanic-survival-prediction-demo.onrender.com](https://ml-project-titanic-survival-prediction.onrender.com).
+Check out the live version of the Titanic Survival Predictor app [here](https://ml-project-titanic-survival-prediction.onrender.com/).
 
 ---
 
